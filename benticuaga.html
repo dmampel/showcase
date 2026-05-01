@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benticuaga — Delfina</title>
+  <meta name="description" content="Ecommerce de útiles y office supplies — dashboard admin, MercadoPago, n8n y automatización. Implementado con SDD." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="synapsse.css" />
+
+  <style>
+    /* Overrides de color para Benticuaga — coral/gold en lugar de violet */
+    .detail-hero__title {
+      background: linear-gradient(135deg, var(--coral), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .detail-hero__num { color: var(--coral); }
+    .gallery-item--accent {
+      border-color: rgba(234, 88, 12, 0.2);
+      box-shadow: 0 4px 30px rgba(234, 88, 12, 0.08);
+    }
+    /* Highlight especial para el dashboard */
+    .gallery-item--dashboard {
+      border: 2px solid rgba(234, 88, 12, 0.25);
+      box-shadow: 0 8px 40px rgba(234, 88, 12, 0.1);
+    }
+    .gallery-item--dashboard .gallery-item__label span:first-child {
+      color: var(--coral);
+    }
+  </style>
+</head>
+<body class="detail-page">
+
+  <!-- Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- Nav -->
+  <nav class="nav" id="detail-nav">
+    <a href="index.html" class="nav__back">← Volver</a>
+    <div class="nav__logo">DEL ✦</div>
+    <a href="https://embed.figma.com/design/jxXNWFL7B0cHXDqsc6F5M7/libreria?node-id=0-1&embed-host=share"
+       target="_blank" rel="noopener" class="nav__cta-link">Ver en Figma ↗</a>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="detail-hero">
+    <div class="detail-hero__blobs">
+      <div class="blob blob--coral"></div>
+      <div class="blob blob--cyan"></div>
+    </div>
+    <div class="detail-hero__content">
+      <div class="detail-hero__meta">
+        <span class="detail-hero__num">02</span>
+        <span class="detail-hero__cat">Ecommerce · Librería & Office · SDD</span>
+      </div>
+      <h1 class="detail-hero__title">Benticuaga</h1>
+      <p class="detail-hero__desc">
+        Ecommerce completo de útiles escolares y supplies para público general y empresas. Lo planifiqué e implementé con SDD — specs, diseño técnico y tareas antes de tocar código. Tiene dashboard admin con estadísticas, notificaciones por email y automatización con n8n.
+      </p>
+      <div class="detail-hero__tags">
+        <span>React</span>
+        <span>Next.js</span>
+        <span>Prisma DB</span>
+        <span>SDD</span>
+      </div>
+    </div>
+
+    <div class="detail-hero__preview">
+      <div class="hero-preview-card hero-preview-card--1">
+        <img src="./assets/benticuaga/benticuaga-home.jpeg" alt="Benticuaga Home" />
+      </div>
+      <div class="hero-preview-card hero-preview-card--2">
+        <img src="./assets/benticuaga/benticuaga-dash.jpeg" alt="Benticuaga Dashboard" />
+      </div>
+      <div class="hero-preview-card hero-preview-card--3">
+        <img src="./assets/benticuaga/benticuaga-shop.jpeg" alt="Benticuaga Shop" />
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== FEATURES ===== -->
+  <section class="detail-features">
+    <div class="detail-features__grid">
+      <div class="feature-item">
+        <span class="feature-icon">📐</span>
+        <h3>SDD End-to-End</h3>
+        <p>Implementado con Spec-Driven Development: proposal, specs, diseño técnico y task breakdown antes de escribir una línea de código.</p>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">📊</span>
+        <h3>Admin Dashboard</h3>
+        <p>Panel de administración con estadísticas de ventas, gestión de productos, pedidos y usuarios. Todo desde una sola interfaz.</p>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">⚡</span>
+        <h3>Automatización n8n</h3>
+        <p>Flujos automatizados con n8n: notificaciones por email, actualización de stock y procesamiento de pedidos sin intervención manual.</p>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">💳</span>
+        <h3>MercadoPago</h3>
+        <p>Checkout integrado con MercadoPago. Múltiples métodos de pago, confirmación automática y manejo de estados del pedido.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="detail-gallery">
+    <div class="detail-gallery__header">
+      <span class="section-label">Pantallas</span>
+      <h2 class="section-title">Cada pantalla,<br><em>pensada.</em></h2>
+    </div>
+
+    <div class="gallery-grid">
+
+      <!-- Home — grande -->
+      <div class="gallery-item gallery-item--full">
+        <div class="gallery-item__img">
+          <img src="./assets/benticuaga/benticuaga-home.jpeg" alt="Benticuaga — Home" loading="lazy" />
+        </div>
+        <div class="gallery-item__label">
+          <span>01</span>
+          <span>Home</span>
+        </div>
+      </div>
+
+      <!-- Shop + Categorías — lado a lado -->
+      <div class="gallery-item gallery-item--half">
+        <div class="gallery-item__img">
+          <img src="./assets/benticuaga/benticuaga-shop.jpeg" alt="Benticuaga — Shop" loading="lazy" />
+        </div>
+        <div class="gallery-item__label">
+          <span>02</span>
+          <span>Catálogo</span>
+        </div>
+      </div>
+      <div class="gallery-item gallery-item--half">
+        <div class="gallery-item__img">
+          <img src="./assets/benticuaga/benticuaga-categorias.jpeg" alt="Benticuaga — Categorías" loading="lazy" />
+        </div>
+        <div class="gallery-item__label">
+          <span>03</span>
+          <span>Categorías</span>
+        </div>
+      </div>
+
+      <!-- Dashboard — grande, protagonista -->
+      <div class="gallery-item gallery-item--full gallery-item--dashboard">
+        <div class="gallery-item__img">
+          <img src="./assets/benticuaga/benticuaga-dash.jpeg" alt="Benticuaga — Admin Dashboard" loading="lazy" />
+        </div>
+        <div class="gallery-item__label">
+          <span>04</span>
+          <span>Admin Dashboard · Estadísticas</span>
+        </div>
+      </div>
+
+      <!-- Cart + Checkout — lado a lado -->
+      <div class="gallery-item gallery-item--half">
+        <div class="gallery-item__img">
+          <img src="./assets/benticuaga/benticuaga-cart.jpeg" alt="Benticuaga — Carrito" loading="lazy" />
+        </div>
+        <div class="gallery-item__label">
+          <span>05</span>
+          <span>Carrito</span>
+        </div>
+      </div>
+      <div class="gallery-item gallery-item--half">
+        <div class="gallery-item__img">
+          <img src="./assets/benticuaga/benticuaga-checkout.jpeg" alt="Benticuaga — Checkout" loading="lazy" />
+        </div>
+        <div class="gallery-item__label">
+          <span>06</span>
+          <span>Checkout · MercadoPago</span>
+        </div>
+      </div>
+
+      <!-- CTA + Footer — lado a lado -->
+      <div class="gallery-item gallery-item--half">
+        <div class="gallery-item__img">
+          <img src="./assets/benticuaga/benticuaga-cta.jpeg" alt="Benticuaga — CTA" loading="lazy" />
+        </div>
+        <div class="gallery-item__label">
+          <span>07</span>
+          <span>Sección CTA</span>
+        </div>
+      </div>
+      <div class="gallery-item gallery-item--half gallery-item--accent">
+        <div class="gallery-item__img">
+          <img src="./assets/benticuaga/benticuaga-footer.jpeg" alt="Benticuaga — Footer" loading="lazy" />
+        </div>
+        <div class="gallery-item__label">
+          <span>08</span>
+          <span>Footer</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FIGMA EMBED ===== -->
+  <section class="detail-figma">
+    <div class="detail-figma__header">
+      <span class="section-label">Diseño</span>
+      <h2 class="section-title">El Figma<br><em>completo.</em></h2>
+      <p class="detail-figma__sub">Sistema de diseño, componentes y todas las pantallas navegables.</p>
+    </div>
+    <div class="detail-figma__embed">
+      <div class="figma-chrome-bar">
+        <span></span><span></span><span></span>
+        <span class="figma-chrome-url">figma.com — Benticuaga · librería</span>
+      </div>
+      <iframe
+        src="https://embed.figma.com/design/jxXNWFL7B0cHXDqsc6F5M7/libreria?node-id=0-1&embed-host=share"
+        allowfullscreen
+        title="Benticuaga — Figma Design completo"
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER NAV ===== -->
+  <footer class="detail-footer">
+    <a href="index.html" class="detail-footer__back">← Ver todos los proyectos</a>
+    <a href="synapsse.html" class="detail-footer__back" style="color: var(--coral);">Ver Synapsse →</a>
+    <span class="detail-footer__credit">Diseñado & desarrollado por Delfina ✦</span>
+  </footer>
+
+  <script>
+    const cursor     = document.getElementById('cursor');
+    const cursorRing = document.getElementById('cursor-ring');
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+    window.addEventListener('mousemove', e => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      cursor.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+    });
+
+    (function animRing() {
+      ringX += (mouseX - ringX) * 0.1;
+      ringY += (mouseY - ringY) * 0.1;
+      cursorRing.style.transform = `translate(${ringX - 18}px, ${ringY - 18}px)`;
+      requestAnimationFrame(animRing);
+    })();
+
+    const nav = document.getElementById('detail-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.gallery-item, .feature-item, .detail-figma__embed').forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
