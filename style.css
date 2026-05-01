@@ -1386,6 +1386,11 @@ body:has(button:hover) .cursor-ring {
   }
 
   /* Featured: layout vertical en lugar de ocultar */
+  .featured__intro-slide,
+  .project-slide {
+    opacity: 0;
+  }
+
   .featured__track-wrapper {
     overflow: visible;
     height: auto;

@@ -65,9 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }, '-=0.2');
 
   // Name split animation
+  const isMobile = window.innerWidth <= 900;
   gsap.fromTo('#hero-name',
-    { skewX: -4, opacity: 0 },
-    { skewX: 0, opacity: 1, duration: 1.2, ease: 'power4.out', delay: 0.4 }
+    { skewX: isMobile ? 0 : -4, opacity: 0, scale: isMobile ? 0.92 : 1 },
+    { skewX: 0, opacity: 1, scale: 1, duration: 1.2, ease: 'power4.out', delay: 0.4 }
   );
 
   // ─────────────────────────────────────────────
@@ -115,22 +116,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupHorizontalScroll();
 
-  // Rotación hacia ATRÁS cuando el scroll es vertical
-  gsap.to('.logo-star', {
-    scrollTrigger: {
-      trigger: 'body',
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: 1
-    },
-    rotation: -180,
-    ease: 'none'
-  });
+  // ─────────────────────────────────────────────
+  // 3b. MOBILE VERTICAL REVEALS — Featured
+  // ─────────────────────────────────────────────
+  function setupMobileReveal() {
+    if (window.innerWidth > 900) return;
+
+    const items = document.querySelectorAll(
+      '.featured__intro-slide, .project-slide'
+    );
+
+    items.forEach((el, i) => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+          }
+        }
+      );
+    });
+  }
+
+  setupMobileReveal();
+
+  // Rotación — desktop: -180° en todo el scroll vertical
+  //           mobile: 360° continuo atado a la sección featured
+  if (window.innerWidth > 900) {
+    gsap.to('.logo-star', {
+      scrollTrigger: {
+        trigger: 'body',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 1
+      },
+      rotation: -180,
+      ease: 'none'
+    });
+  } else {
+    gsap.to('.logo-star', {
+      scrollTrigger: {
+        trigger: '#featured',
+        start: 'top 80%',
+        end: 'bottom 20%',
+        scrub: 1.5,
+      },
+      rotation: 360,
+      ease: 'none'
+    });
+  }
 
   window.addEventListener('resize', () => {
     ScrollTrigger.getAll().forEach(t => t.kill());
     gsap.set(track, { clearProps: 'x' });
+    gsap.set('.logo-star', { clearProps: 'rotation' });
     setupHorizontalScroll();
+    setupMobileReveal();
     initRevealAnimations();
   });
 
@@ -150,20 +196,40 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     );
 
-    // Experiment cards — stagger
-    gsap.fromTo('.exp-card',
-      { opacity: 0, y: 60 },
-      {
-        opacity: 1, y: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        stagger: 0.15,
-        scrollTrigger: {
-          trigger: '.experiments__grid',
-          start: 'top 80%',
+    // Experiment cards — trigger individual por card
+    document.querySelectorAll('.exp-card').forEach((card) => {
+      gsap.fromTo(card,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 88%',
+          }
         }
+      );
+    });
+
+    // Sobre mí — título + rows
+    gsap.fromTo('.sobre-mi__title',
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1, y: 0, duration: 1, ease: 'power4.out',
+        scrollTrigger: { trigger: '.sobre-mi', start: 'top 80%' }
       }
     );
+
+    document.querySelectorAll('.sobre-mi__row').forEach((row) => {
+      gsap.fromTo(row,
+        { opacity: 0, x: -30 },
+        {
+          opacity: 1, x: 0, duration: 0.7, ease: 'power3.out',
+          scrollTrigger: { trigger: row, start: 'top 90%' }
+        }
+      );
+    });
 
     // Contact title
     gsap.fromTo('.contact__title',
