@@ -19,22 +19,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const cursor     = document.getElementById('cursor');
   const cursorRing = document.getElementById('cursor-ring');
 
-  let mouseX = 0, mouseY = 0;
-  let ringX  = 0, ringY  = 0;
+  const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 
-  window.addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    gsap.set(cursor, { x: mouseX, y: mouseY });
-  });
+  if (isTouchDevice) {
+    cursor.style.display = 'none';
+    cursorRing.style.display = 'none';
+  } else {
+    let mouseX = 0, mouseY = 0;
+    let ringX  = 0, ringY  = 0;
 
-  // Smooth ring follow
-  (function animateRing() {
-    ringX += (mouseX - ringX) * 0.1;
-    ringY += (mouseY - ringY) * 0.1;
-    gsap.set(cursorRing, { x: ringX, y: ringY });
-    requestAnimationFrame(animateRing);
-  })();
+    window.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      gsap.set(cursor, { x: mouseX, y: mouseY });
+    });
+
+    // Smooth ring follow
+    (function animateRing() {
+      ringX += (mouseX - ringX) * 0.1;
+      ringY += (mouseY - ringY) * 0.1;
+      gsap.set(cursorRing, { x: ringX, y: ringY });
+      requestAnimationFrame(animateRing);
+    })();
+  }
 
   // ─────────────────────────────────────────────
   // 2. HERO ENTRANCE ANIMATION
@@ -75,22 +82,50 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.innerWidth <= 900) return; // skip on mobile
 
     const scrollDist = track.scrollWidth - window.innerWidth;
-
-    gsap.to(track, {
-      x: -scrollDist,
-      ease: 'none',
+    
+    // Timeline para controlar el movimiento + aire al inicio y al final
+    const horizontalTl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        pin: true,          // GSAP gestiona el pin + spacer
+        pin: true,
         scrub: 1.2,
         start: 'top top',
-        end: () => '+=' + scrollDist,
+        end: () => '+=' + (scrollDist + 800), // Total de aire (inicio + fin)
         invalidateOnRefresh: true,
       }
     });
+
+    // 1. Quédate quieto al inicio (para leer "Proyectos reales")
+    horizontalTl.to({}, { duration: 0.4 });
+
+    // 2. Movimiento horizontal + Rotación hacia ADELANTE
+    horizontalTl.to(track, {
+      x: -scrollDist,
+      ease: 'none'
+    }, 'move');
+
+    horizontalTl.to('.logo-star', {
+      rotation: 360,
+      ease: 'none'
+    }, 'move');
+
+    // 3. Quédate quieto al final (para leer "Labs & Experimentos")
+    horizontalTl.to({}, { duration: 0.3 });
   }
 
   setupHorizontalScroll();
+
+  // Rotación hacia ATRÁS cuando el scroll es vertical
+  gsap.to('.logo-star', {
+    scrollTrigger: {
+      trigger: 'body',
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: 1
+    },
+    rotation: -180,
+    ease: 'none'
+  });
 
   window.addEventListener('resize', () => {
     ScrollTrigger.getAll().forEach(t => t.kill());
@@ -216,5 +251,21 @@ document.addEventListener('DOMContentLoaded', () => {
     onEnter:     () => nav.classList.add('scrolled'),
     onLeaveBack: () => nav.classList.remove('scrolled'),
   });
+
+  // ─────────────────────────────────────────────
+  // 8. HASH ANCHOR HANDLING
+  // ─────────────────────────────────────────────
+  if (window.location.hash) {
+    const hash = window.location.hash;
+    const target = document.querySelector(hash);
+    
+    if (target) {
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+        const yOffset = target.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({ top: yOffset, behavior: 'smooth' });
+      }, 700);
+    }
+  }
 
 });

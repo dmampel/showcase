@@ -14,6 +14,58 @@
   <link rel="stylesheet" href="synapsse.css" />
 
   <style>
+    .detail-hero__blobs { position: absolute; inset: 0; pointer-events: none; }
+
+    .detail-features {
+      background: #0f0f14;
+    }
+    .detail-features__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .detail-features .feature-item h3 {
+      color: #f0ede8;
+    }
+    .detail-features .feature-item p {
+      color: rgba(240, 237, 232, 0.5);
+    }
+
+    /* Gallery grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .gallery-item--full {
+      grid-column: 1 / -1;
+    }
+    .gallery-item--half {
+      grid-column: span 1;
+    }
+
+    /* Gallery — hover + borde inferior coral */
+    .gallery-item__img {
+      position: relative;
+    }
+    .gallery-item__img::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 26px;
+      background: var(--violet);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+    .gallery-item__img img {
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .gallery-item:hover .gallery-item__img img {
+      transform: scale(1.05);
+    }
+    .gallery-item:hover .gallery-item__img::before {
+      opacity: 1;
+    }
+
     /* Overrides de color para Benticuaga — coral/gold en lugar de violet */
     .detail-hero__title {
       background: linear-gradient(135deg, var(--coral), var(--gold));
@@ -22,18 +74,6 @@
       background-clip: text;
     }
     .detail-hero__num { color: var(--coral); }
-    .gallery-item--accent {
-      border-color: rgba(234, 88, 12, 0.2);
-      box-shadow: 0 4px 30px rgba(234, 88, 12, 0.08);
-    }
-    /* Highlight especial para el dashboard */
-    .gallery-item--dashboard {
-      border: 2px solid rgba(234, 88, 12, 0.25);
-      box-shadow: 0 8px 40px rgba(234, 88, 12, 0.1);
-    }
-    .gallery-item--dashboard .gallery-item__label span:first-child {
-      color: var(--coral);
-    }
   </style>
 </head>
 <body class="detail-page">
@@ -44,10 +84,12 @@
 
   <!-- Nav -->
   <nav class="nav" id="detail-nav">
-    <a href="index.html" class="nav__back">← Volver</a>
-    <div class="nav__logo">DEL ✦</div>
-    <a href="https://embed.figma.com/design/jxXNWFL7B0cHXDqsc6F5M7/libreria?node-id=0-1&embed-host=share"
-       target="_blank" rel="noopener" class="nav__cta-link">Ver en Figma ↗</a>
+    <div class="nav__inner">
+      <a href="index.html" class="nav__back">← Volver</a>
+      <div class="nav__logo">DEL ✦</div>
+      <a href="https://embed.figma.com/design/jxXNWFL7B0cHXDqsc6F5M7/libreria?node-id=0-1&embed-host=share"
+         target="_blank" rel="noopener" class="nav__cta-link">Ver en Figma ↗</a>
+    </div>
   </nav>
 
   <!-- ===== HERO ===== -->
@@ -58,12 +100,12 @@
     </div>
     <div class="detail-hero__content">
       <div class="detail-hero__meta">
-        <span class="detail-hero__num">02</span>
+        <span class="detail-hero__num">01</span>
         <span class="detail-hero__cat">Ecommerce · Librería & Office · SDD</span>
       </div>
       <h1 class="detail-hero__title">Benticuaga</h1>
       <p class="detail-hero__desc">
-        Ecommerce completo de útiles escolares y supplies para público general y empresas. Lo planifiqué e implementé con SDD — specs, diseño técnico y tareas antes de tocar código. Tiene dashboard admin con estadísticas, notificaciones por email y automatización con n8n.
+        Tienda online de útiles escolares y artículos de librería y oficina para público general y empresas. Lo estoy desarrollando con Claude Code y metodología SDD — specs, diseño técnico y tareas antes de tocar código. Tiene dashboard admin con estadísticas, notificaciones por email y automatización con n8n.
       </p>
       <div class="detail-hero__tags">
         <span>React</span>
@@ -230,7 +272,7 @@
   <!-- ===== FOOTER NAV ===== -->
   <footer class="detail-footer">
     <a href="index.html" class="detail-footer__back">← Ver todos los proyectos</a>
-    <a href="synapsse.html" class="detail-footer__back" style="color: var(--coral);">Ver Synapsse →</a>
+    <a href="index.html#experiments-slide" class="detail-footer__back" style="color: var(--coral);">Ir a Labs →</a>
     <span class="detail-footer__credit">Diseñado & desarrollado por Delfina ✦</span>
   </footer>
 

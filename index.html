@@ -30,7 +30,7 @@
     <div class="hero__noise"></div>
 
     <nav class="nav">
-      <div class="nav__logo">DEL ✦</div>
+      <div class="nav__logo">DEL <span class="logo-star">✦</span></div>
       <div class="nav__links">
         <a href="#featured">Proyectos</a>
         <a href="#experiments">Labs</a>
@@ -56,14 +56,11 @@
     <div class="hero__bottom">
       <div class="hero__scroll-hint" id="scroll-hint">
         <div class="hero__scroll-line"></div>
-        <span>scroll</span>
       </div>
       <div class="hero__tech-tags">
-        <span class="tech-tag">Ecommerce</span>
-        <span class="tech-tag">Figma</span>
-        <span class="tech-tag">Python</span>
-        <span class="tech-tag">n8n</span>
-        <span class="tech-tag">MercadoPago</span>
+        <span class="tech-tag">React</span>
+        <span class="tech-tag">TypeScript</span>
+        <span class="tech-tag">Tailwind</span>
       </div>
     </div>
   </section>
@@ -80,7 +77,14 @@
         <span>n8n Automation</span><span class="star">✦</span>
         <span>Web Apps</span><span class="star">✦</span>
         <span>SDD</span><span class="star">✦</span>
-        <span>AI Chatbot</span><span class="star">✦</span>
+        <span>UI Design</span><span class="star">✦</span>
+        <span>Ecommerce</span><span class="star">✦</span>
+        <span>Figma</span><span class="star">✦</span>
+        <span>MercadoPago</span><span class="star">✦</span>
+        <span>Python</span><span class="star">✦</span>
+        <span>n8n Automation</span><span class="star">✦</span>
+        <span>Web Apps</span><span class="star">✦</span>
+        <span>SDD</span><span class="star">✦</span>
         <span>Admin Dashboard</span><span class="star">✦</span>
         <!-- duplicate for seamless loop -->
         <span>UI Design</span><span class="star">✦</span>
@@ -91,7 +95,6 @@
         <span>n8n Automation</span><span class="star">✦</span>
         <span>Web Apps</span><span class="star">✦</span>
         <span>SDD</span><span class="star">✦</span>
-        <span>AI Chatbot</span><span class="star">✦</span>
         <span>Admin Dashboard</span><span class="star">✦</span>
       </div>
     </div>
@@ -102,82 +105,37 @@
     <div class="featured__track-wrapper" id="featured-track-wrapper">
       <div class="featured__track" id="featured-track">
 
-        <!-- Slide 0: Intro -->
-        <div class="featured__intro-slide">
-          <span class="section-label">01 — Proyectos Principales</span>
-          <h2 class="featured__intro-title">Trabajo<br><em>serio.</em></h2>
-          <p class="featured__intro-sub">Dos ecommerces completos — desde Figma hasta integración de pagos y automatización.</p>
-          <div class="featured__intro-arrow">
-            <span>scrolleá →</span>
-          </div>
+        <!-- Slide 0: Intro A -->
+        <div class="featured__intro-slide featured__intro-slide--full">
+          <span class="section-label">01</span>
+          <h2 class="featured__intro-title">Proyectos<br><em>reales.</em></h2>
         </div>
 
-        <!-- Slide 1: Synapsse -->
-        <article class="project-slide" id="slide-synapsse" data-accent="#9333EA">
-          <div class="project-slide__inner">
-            <div class="project-slide__info">
-              <div class="project-slide__meta">
-                <span class="project-num">01</span>
-                <span class="project-category">Ecommerce · Skincare</span>
-              </div>
-              <h3 class="project-slide__title">Synapsse</h3>
-              <p class="project-slide__desc">
-                Proyecto de facultad en equipo. El diseño fue provisto en Figma por un diseñador externo; nuestro trabajo fue llevarlo a código: front-end completo, integración con MercadoPago y chatbot con IA.
-              </p>
-              <ul class="project-slide__features">
-                <li>✦ UI/UX completa en Figma</li>
-                <li>✦ Integración MercadoPago</li>
-                <li>✦ Chatbot con IA</li>
-              </ul>
-              <div class="project-slide__tags">
-                <span>Figma</span>
-                <span>MercadoPago</span>
-                <span>AI Chatbot</span>
-                <span>Ecommerce</span>
-              </div>
-              <a
-                href="https://embed.figma.com/design/aPCZvHpKGwu5E5KQDDykAB/proyectoFinal?node-id=2007-21&embed-host=share"
-                target="_blank"
-                rel="noopener"
-                class="project-slide__figma-btn">
-                Ver diseño en Figma ↗
-              </a>
-              <a href="synapsse.html" class="project-slide__detail-btn">
-                Ver todas las pantallas →
-              </a>
-            </div>
-            <div class="project-slide__mockup">
-              <div class="mockup-stack">
-                <div class="mockup-frame mockup-frame--back">
-                  <img src="./assets/synapsse/Synapsse-shop.jpeg" alt="Synapsse — catalogo" />
-                </div>
-                <div class="mockup-frame mockup-frame--front">
-                  <img src="./assets/synapsse/Synapsse-home.jpeg" alt="Synapsse — home" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="project-slide__accent" style="--accent: #9333EA;"></div>
-        </article>
+        <!-- Slide 0: Intro B -->
+        <div class="featured__intro-slide">
+          <h4 class="featured__intro-title">Un ecommerce<br><em>completo.</em></h4>
+          <p class="featured__intro-sub">Desde el diseño en Figma hasta la integración de pagos y automatizaciones reales.</p>
+          <span class="section-label"> - En desarrollo - </span>
+        </div>
 
         <!-- Slide 2: Benticuaga -->
         <article class="project-slide" id="slide-benticuaga" data-accent="#EA580C">
           <div class="project-slide__inner">
             <div class="project-slide__info">
               <div class="project-slide__meta">
-                <span class="project-num">02</span>
+                <span class="project-num">01</span>
                 <span class="project-category">Ecommerce · Librería & Office</span>
               </div>
               <h3 class="project-slide__title">Benticuaga</h3>
               <p class="project-slide__desc">
-                Ecommerce completo de útiles y supplies para público general y empresas. Lo implémenté con SDD — specs, diseño técnico y tareas antes de tocar código.
+                Tienda online de útiles y supplies para público general y empresas. Lo estoy desarrollando con Claude Code y metodología SDD — especificaciones, diseño técnico y tareas antes de tocar código.
               </p>
               <ul class="project-slide__features">
                 <li>✦ Admin Dashboard + Estadísticas</li>
                 <li>✦ Integración MercadoPago</li>
                 <li>✦ Automatización con n8n</li>
                 <li>✦ Notificaciones por email</li>
-                <li>✦ Implementado con SDD</li>
+                <li>✦ Metodología SDD</li>
               </ul>
               <div class="project-slide__tags">
                 <span>React</span>
@@ -213,6 +171,12 @@
           <div class="project-slide__accent" style="--accent: #EA580C;"></div>
         </article>
 
+        <!-- Slide 3: Intro Labs (Cierre Horizontal) -->
+        <div class="featured__intro-slide featured__intro-slide--full" id="experiments-slide">
+          <span class="section-label">02</span>
+          <h2 class="featured__intro-title">Labs &<br><em>Experimentos.</em></h2>
+        </div>
+
       </div><!-- end track -->
     </div><!-- end track-wrapper -->
   </section>
@@ -220,7 +184,6 @@
   <!-- ===== EXPERIMENTS ===== -->
   <section class="experiments" id="experiments">
     <div class="experiments__header">
-      <span class="section-label">02 — Labs & Experimentos</span>
       <h2 class="section-title">También hago <em>esto.</em></h2>
     </div>
 
@@ -246,7 +209,7 @@
           </div>
           <div class="exp-card__info">
             <div class="exp-card__top">
-              <span class="exp-num">03</span>
+              <span class="exp-num">02</span>
               <span class="exp-tag">Editorial · Web Design</span>
             </div>
             <h3 class="exp-card__title">Rolling Stone Mag</h3>
@@ -275,7 +238,7 @@
           </div>
           <div class="exp-card__info">
             <div class="exp-card__top">
-              <span class="exp-num">04</span>
+              <span class="exp-num">03</span>
               <span class="exp-tag">CSS Animation · JS</span>
             </div>
             <h3 class="exp-card__title">Vinyl Player</h3>
@@ -304,7 +267,7 @@
           </div>
           <div class="exp-card__info">
             <div class="exp-card__top">
-              <span class="exp-num">05</span>
+              <span class="exp-num">04</span>
               <span class="exp-tag">Python · Dashboard</span>
             </div>
             <h3 class="exp-card__title">Gestor de Viajes</h3>
@@ -315,6 +278,7 @@
 
     </div>
   </section>
+
 
   <!-- ===== SOBRE MÍ — editorial ===== -->
   <section class="sobre-mi" id="contact">
