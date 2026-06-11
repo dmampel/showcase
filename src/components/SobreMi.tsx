@@ -60,14 +60,6 @@ export default function SobreMi() {
         </div>
       </div>
 
-      <div className="sobre-mi__divider" />
-
-      <blockquote className="sobre-mi__quote">
-        <span className="sobre-mi__quote-mark">"</span>
-        Si no sé algo, lo aprendo.<br />No tengo ego con las herramientas.
-        <span className="sobre-mi__quote-mark sobre-mi__quote-mark--close">"</span>
-      </blockquote>
-
       <footer className="sobre-mi__footer">
         <div className="sobre-mi__closing">
           <p className="sobre-mi__closing-text">Me encantaría poder trabajar juntos. ✦</p>
